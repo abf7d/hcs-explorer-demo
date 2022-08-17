@@ -20,8 +20,6 @@ import {
   LayerMenuLibModule,
 } from '@labshare/polus-render-library';
 
-// import '@labshare/polus-viv-components';
-// import '@labshare/polus-render-components';
   
   import {VivEngineLibModule,VivMenuLibModule } from '@labshare/polus-render-library';
 // import '@labshare/polus-viv-components';
