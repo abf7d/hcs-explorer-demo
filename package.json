@@ -25,7 +25,7 @@
     "@labshare/base-ui-services": "^2.0.1",
     "@labshare/ls-font": "^1.11.0",
     "@labshare/ngx-core-services": "^3.10.1",
-    "@labshare/polus-render-library": "^1.1.1",
+    "@labshare/polus-render-library": "^1.1.2",
     "@labshare/polus-viv-components": "^1.8.4",
     "@ngrx/store": "^9.2.1",
     "@ngrx/store-devtools": "^9.2.1",
@@ -44,6 +44,8 @@
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "codelyzer": "^5.1.2",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~5.0.0",
@@ -51,9 +53,20 @@
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~3.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "lint-staged": "^10.0.8",
     "protractor": "~7.0.0",
+    "prettier": "1.19.1",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,js,css,md,html}": "npm run lint:fix"
   }
 }
