@@ -57,9 +57,7 @@ const APP_CONF = {
     VivEngineLibModule,
     HttpClientModule,
     LayerMenuLibModule,
-    // PolusOverlayLibModule,
     VivMenuLibModule,
-    // NgxCoreServicesModule.forRoot({appConf: APP_CONF, appType: 'app', appBuildVersion: '123'}),
     BaseUIServicesModule.forRoot({appConf: APP_CONF, appType: AppType.Site, appBuildVersion: '123'}),
     StoreModule.forRoot({
       overview: overviewReducer,
