@@ -32,6 +32,7 @@ import {
   AuthInterceptor
 } from '@labshare/base-ui-services';
 import {CommonModule} from '@angular/common';
+import {ImageViewerComponent} from './components/image-viewer/image-viewer.component';
 
 function initialize(http: HttpClient, config: ConfigService, auth: AuthService): () => Promise<any> {
   return async () => {
@@ -49,7 +50,7 @@ const APP_CONF = {
 };
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ImageViewerComponent],
   imports: [
     CommonModule,
     BrowserModule,
