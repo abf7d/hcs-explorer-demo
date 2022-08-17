@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import * as KEYS from '../constants/keys';
-import { Theme } from '../models/theme';
+import {Theme} from '../models/theme';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,8 +16,10 @@ export class ThemeService {
     if (theme !== undefined) {
       // child properties get set first because parent properties should over override them
       if (theme.extend) {
-        const childTheme = this.themes.find((theme) => theme.name === theme.extend);
-        if (childTheme) this.setThemeProps(props, childTheme);
+        const childTheme = this.themes.find(themeDef => themeDef.name === theme.extend);
+        if (childTheme) {
+          this.setThemeProps(props, childTheme);
+        }
       }
       for (const prop of Object.keys(theme.properties)) {
         props[prop] = theme.properties[prop];
@@ -26,7 +28,7 @@ export class ThemeService {
   }
 
   public setActiveTheme(name: string): void {
-    const activeTheme = this.themes.find((theme) => theme.name === name);
+    const activeTheme = this.themes.find(theme => theme.name === name);
     if (!activeTheme) {
       throw new Error(`Theme with name ${name} was not found`);
     }

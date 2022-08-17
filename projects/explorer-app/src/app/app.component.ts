@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ImageViewerService } from './image-viewer.service';
-import { HttpClient } from '@angular/common/http';
-import { ConfigService } from '@labshare/base-ui-services';
-import { ThemeService } from './services/theme.service';
-import * as KEYS from './constants/keys'
+import {Component, OnInit} from '@angular/core';
+import {ImageViewerService} from './image-viewer.service';
+import {HttpClient} from '@angular/common/http';
+import {ConfigService} from '@labshare/base-ui-services';
+import {ThemeService} from './services/theme.service';
+import * as KEYS from './constants/keys';
 import urls from './urls.json';
 import names from './names.json';
 @Component({
@@ -12,7 +12,12 @@ import names from './names.json';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private config: ConfigService, public imageViewerService: ImageViewerService, private http: HttpClient, private themeService: ThemeService) {}
+  constructor(
+    private config: ConfigService,
+    public imageViewerService: ImageViewerService,
+    private http: HttpClient,
+    private themeService: ThemeService
+  ) {}
 
   async ngOnInit() {
     this.themeService.setActiveTheme(KEYS.PAGE_THEME_DARK_NAME);

@@ -1,8 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 
 import {StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
@@ -17,14 +17,11 @@ import {
   lensReducer,
   defaultConfigReducer,
   overlayReducer,
-  LayerMenuLibModule,
+  LayerMenuLibModule
 } from '@labshare/polus-render-library';
 
-  
-  import {VivEngineLibModule,VivMenuLibModule } from '@labshare/polus-render-library';
-// import '@labshare/polus-viv-components';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-// import { APP_TYPE, initializeFromAppConf, NgxCoreServicesModule } from '@labshare/ngx-core-services';
+import {VivEngineLibModule, VivMenuLibModule} from '@labshare/polus-render-library';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 import {
   AuthService,
@@ -34,16 +31,15 @@ import {
   BaseUIServicesModule,
   AuthInterceptor
 } from '@labshare/base-ui-services';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 
 function initialize(http: HttpClient, config: ConfigService, auth: AuthService): () => Promise<any> {
   return async () => {
-    navigator;
     return initializeFromUrl(http, config, auth, `./config/config.json`);
   };
 }
 
-let APP_CONF = {
+const APP_CONF = {
   production: false,
   services: {
     auth: {
@@ -52,11 +48,8 @@ let APP_CONF = {
   }
 };
 
-
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -64,7 +57,7 @@ let APP_CONF = {
     VivEngineLibModule,
     HttpClientModule,
     LayerMenuLibModule,
-    // PolusOverlayLibModule, 
+    // PolusOverlayLibModule,
     VivMenuLibModule,
     // NgxCoreServicesModule.forRoot({appConf: APP_CONF, appType: 'app', appBuildVersion: '123'}),
     BaseUIServicesModule.forRoot({appConf: APP_CONF, appType: AppType.Site, appBuildVersion: '123'}),
@@ -77,11 +70,12 @@ let APP_CONF = {
       defaultConfig: defaultConfigReducer,
       overlay: overlayReducer
     }),
-    StoreDevtoolsModule.instrument(),
+    StoreDevtoolsModule.instrument()
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
-    {provide: KEYS.THEME_TOKEN, useValue: THEMES.ALL},,
+    {provide: KEYS.THEME_TOKEN, useValue: THEMES.ALL},
+    ,
     {
       provide: APP_INITIALIZER,
       useFactory: initialize,
@@ -91,4 +85,4 @@ let APP_CONF = {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
